@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="houser.springboot.dao.LikeMapper" >
+  <resultMap id="BaseResultMap" type="houser.springboot.model.Like" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="thumbnail_pic_s" property="thumbnailPicS" jdbcType="VARCHAR" />
+    <result column="thumbnail_pic_s02" property="thumbnailPicS02" jdbcType="VARCHAR" />
+    <result column="thumbnail_pic_s03" property="thumbnailPicS03" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="author_name" property="authorName" jdbcType="VARCHAR" />
+    <result column="uniquekey" property="uniquekey" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, title, date, category, thumbnail_pic_s, thumbnail_pic_s02, thumbnail_pic_s03, 
+    url, author_name, uniquekey
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from like
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from like
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="houser.springboot.model.Like" >
+    insert into like (id, user_id, title, 
+      date, category, thumbnail_pic_s, 
+      thumbnail_pic_s02, thumbnail_pic_s03, url, 
+      author_name, uniquekey)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, #{thumbnailPicS,jdbcType=VARCHAR}, 
+      #{thumbnailPicS02,jdbcType=VARCHAR}, #{thumbnailPicS03,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{authorName,jdbcType=VARCHAR}, #{uniquekey,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="houser.springboot.model.Like" >
+    insert into like
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+      <if test="thumbnailPicS != null" >
+        thumbnail_pic_s,
+      </if>
+      <if test="thumbnailPicS02 != null" >
+        thumbnail_pic_s02,
+      </if>
+      <if test="thumbnailPicS03 != null" >
+        thumbnail_pic_s03,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="authorName != null" >
+        author_name,
+      </if>
+      <if test="uniquekey != null" >
+        uniquekey,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnailPicS != null" >
+        #{thumbnailPicS,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnailPicS02 != null" >
+        #{thumbnailPicS02,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnailPicS03 != null" >
+        #{thumbnailPicS03,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="authorName != null" >
+        #{authorName,jdbcType=VARCHAR},
+      </if>
+      <if test="uniquekey != null" >
+        #{uniquekey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="houser.springboot.model.Like" >
+    update like
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnailPicS != null" >
+        thumbnail_pic_s = #{thumbnailPicS,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnailPicS02 != null" >
+        thumbnail_pic_s02 = #{thumbnailPicS02,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnailPicS03 != null" >
+        thumbnail_pic_s03 = #{thumbnailPicS03,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="authorName != null" >
+        author_name = #{authorName,jdbcType=VARCHAR},
+      </if>
+      <if test="uniquekey != null" >
+        uniquekey = #{uniquekey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="houser.springboot.model.Like" >
+    update like
+    set user_id = #{userId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      thumbnail_pic_s = #{thumbnailPicS,jdbcType=VARCHAR},
+      thumbnail_pic_s02 = #{thumbnailPicS02,jdbcType=VARCHAR},
+      thumbnail_pic_s03 = #{thumbnailPicS03,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      author_name = #{authorName,jdbcType=VARCHAR},
+      uniquekey = #{uniquekey,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
